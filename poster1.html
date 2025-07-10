@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khám Phá Con Số Bí Mật Của Bạn</title>
+  <link rel="icon" type="image/png" href="https://example.com/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #ffffff;
+      font-family: 'Poppins', sans-serif;
+    }
+    .poster {
+      width: 528px;
+      height: 816px;
+      background: linear-gradient(to bottom, #4C1D95 0%, #1E3A8A 100%);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    .cosmic-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(128, 62, 240, 0.36) 0%, rgba(42, 67, 101, 0.3) 70%, transparent 100%);
+      z-index: 1;
+    }
+    .sun {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, #FFD700 0%, #FFFACD 70%);
+      border-radius: 50%;
+      box-shadow: 0 0 30px rgba(255, 250, 205, 0.9), 0 0 60px rgba(255, 250, 205, 0.6);
+      z-index: 2;
+    }
+    .orbits {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    .planet {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-family: 'Great Vibes', cursive;
+      font-size: 22px;
+      color: #FFD700;
+      text-shadow: 0 0 5px #FFFFFF, 0 0 10px #FFFFFF;
+      text-align: center;
+      z-index: 2;
+    }
+    .star {
+      position: absolute;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    .star-gold { background: #FFD700; }
+    .star-white { background: #FFFFFF; }
+    .star-1 { width: 3px; height: 3px; top: 60px; left: 90px; opacity: 0.8; }
+    .star-2 { width: 2px; height: 2px; top: 100px; left: 420px; opacity: 0.5; }
+    .star-3 { width: 4px; height: 4px; top: 140px; left: 240px; opacity: 0.7; }
+    .star-4 { width: 3px; height: 3px; top: 220px; left: 480px; opacity: 0.4; }
+    .star-5 { width: 2px; height: 2px; top: 300px; left: 60px; opacity: 0.6; }
+    .star-6 { width: 3px; height: 3px; top: 380px; left: 320px; opacity: 0.7; }
+    .star-7 { width: 5px; height: 5px; top: 460px; left: 140px; opacity: 0.8; }
+    .star-8 { width: 2px; height: 2px; top: 540px; left: 400px; opacity: 0.5; }
+    .star-9 { width: 3px; height: 3px; top: 180px; left: 500px; opacity: 0.6; }
+    .star-10 { width: 2px; height: 2px; top: 260px; left: 70px; opacity: 0.7; }
+    .star-11 { width: 3px; height: 3px; top: 620px; left: 180px; opacity: 0.5; }
+    .star-12 { width: 2px; height: 2px; top: 700px; left: 360px; opacity: 0.4; }
+    .star-13 { width: 4px; height: 4px; top: 80px; left: 300px; opacity: 0.6; }
+    .star-14 { width: 3px; height: 3px; top: 500px; left: 440px; opacity: 0.5; }
+    .star-15 { width: 2px; height: 2px; top: 650px; left: 100px; opacity: 0.7; }
+
+    .title {
+      position: absolute;
+      top: 28px;
+      width: 100%;
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      font-weight: bold;
+      font-size: 32px;
+      color: #D4AF37;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      z-index: 3;
+      white-space: nowrap;
+      min-width: 400px;
+    }
+
+    .title1 {
+      position: absolute;
+      top: 68px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Cinzel', serif;
+      font-weight: bold;
+      font-size: 48px;
+      color: #D4AF37;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+      z-index: 3;
+      white-space: nowrap;
+      min-width: 400px;
+    }
+
+    .subtitle {
+      position: absolute;
+      top: 202px;
+      width: 100%;
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      font-size: 32px;
+      color: #FFFFFF;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+      text-align: center;
+      z-index: 3;
+    }
+
+    .details {
+      position: absolute;
+      bottom: 160px;
+      width: 100%;
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      color: #FFFFFF;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+      text-align: center;
+      line-height: 1.5;
+      z-index: 3;
+    }
+
+    .cta {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #6B46C1;
+      border: 2px solid #FFD700;
+      border-radius: 56px;
+      padding: 16px 40px;
+      font-family: 'Great Vibes', cursive;
+      font-size: 32px;
+      color: #FFFFFF;
+      text-decoration: none;
+      text-align: center;
+      z-index: 3;
+    }
+
+    .cta:hover {
+      background: #4C1D95;
+      box-shadow: 0 0 10px rgba(255, 250, 205, 0.8);
+    }
+
+    @keyframes orbit-90 {
+      0% { transform: rotate(0deg) translate(90px) rotate(0deg); }
+      100% { transform: rotate(360deg) translate(90px) rotate(-360deg); }
+    }
+    @keyframes orbit-130 {
+      0% { transform: rotate(0deg) translate(130px) translateY(-10px) rotate(0deg); }
+      100% { transform: rotate(360deg) translate(130px) translateY(-10px) rotate(-360deg); }
+    }
+    @keyframes orbit-170 {
+      0% { transform: rotate(0deg) translate(170px) translateY(15px) rotate(0deg); }
+      100% { transform: rotate(360deg) translate(170px) translateY(15px) rotate(-360deg); }
+    }
+    @keyframes orbit-210 {
+      0% { transform: rotate(0deg) translate(210px) translateY(-20px) rotate(0deg); }
+      100% { transform: rotate(360deg) translate(210px) translateY(-20px) rotate(-360deg); }
+    }
+    @keyframes orbit-250 {
+      0% { transform: rotate(0deg) translate(250px) translateY(25px) rotate(0deg); }
+      100% { transform: rotate(360deg) translate(250px) translateY(25px) rotate(-360deg); }
+    }
+    @keyframes orbit-290 {
+      0% { transform: rotate(0deg) translate(290px) translateY(-30px) rotate(0deg); }
+      100% { transform: rotate(360deg) translate(290px) translateY(-30px) rotate(-360deg); }
+    }
+    @keyframes orbit-330 {
+      0% { transform: rotate(0deg) translate(330px) translateY(35px) rotate(0deg); }
+      100% { transform: rotate(360deg) translate(330px) translateY(35px) rotate(-360deg); }
+    }
+    @keyframes orbit-370 {
+      0% { transform: rotate(0deg) translate(370px) translateY(-40px) rotate(0deg); }
+      100% { transform: rotate(360deg) translate(370px) translateY(-40px) rotate(-360deg); }
+    }
+    @keyframes orbit-410 {
+      0% { transform: rotate(0deg) translate(410px) translateY(45px) rotate(0deg); }
+      100% { transform: rotate(360deg) translate(410px) translateY(45px) rotate(-360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="poster">
+    <div class="cosmic-overlay"></div>
+    <div class="sun"></div>
+    <svg class="orbits" width="528" height="816">
+      <circle cx="264" cy="408" r="90" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.3" />
+      <circle cx="264" cy="408" r="130" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.3" />
+      <circle cx="264" cy="408" r="170" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.25" />
+      <circle cx="264" cy="408" r="210" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.25" />
+      <circle cx="264" cy="408" r="250" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.2" />
+      <circle cx="264" cy="408" r="290" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.2" />
+      <circle cx="264" cy="408" r="330" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.15" />
+      <circle cx="264" cy="408" r="370" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.15" />
+      <circle cx="264" cy="408" r="410" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.1" />
+    </svg>
+
+    <div class="planet" style="animation: orbit-90 15s linear infinite;">1</div>
+    <div class="planet" style="animation: orbit-130 17s linear infinite;">2</div>
+    <div class="planet" style="animation: orbit-170 19s linear infinite;">3</div>
+    <div class="planet" style="animation: orbit-210 21s linear infinite;">4</div>
+    <div class="planet" style="animation: orbit-250 23s linear infinite;">5</div>
+    <div class="planet" style="animation: orbit-290 25s linear infinite;">6</div>
+    <div class="planet" style="animation: orbit-330 27s linear infinite;">7</div>
+    <div class="planet" style="animation: orbit-370 29s linear infinite;">8</div>
+    <div class="planet" style="animation: orbit-410 31s linear infinite;">9</div>
+
+    <div class="star star-gold star-1"></div>
+    <div class="star star-white star-2"></div>
+    <div class="star star-gold star-3"></div>
+    <div class="star star-white star-4"></div>
+    <div class="star star-gold star-5"></div>
+    <div class="star star-white star-6"></div>
+    <div class="star star-gold star-7"></div>
+    <div class="star star-white star-8"></div>
+    <div class="star star-gold star-9"></div>
+    <div class="star star-white star-10"></div>
+    <div class="star star-gold star-11"></div>
+    <div class="star star-white star-12"></div>
+    <div class="star star-gold star-13"></div>
+    <div class="star star-white star-14"></div>
+    <div class="star star-gold star-15"></div>
+
+    <div class="title">KHÁM PHÁ CON SỐ</div>
+    <div class="title1">BÍ MẬT CỦA BẠN</div>
+    <div class="subtitle">LẮNG NGHE BẢN THÂN QUA THẦN SỐ HỌC</div>
+    <div class="details">
+        <i class="fas fa-heart" style="color: #FF6F62"></i> THẤU HIỂU BẢN THÂN QUA SỐ CHỦ ĐẠO <i class="fas fa-heart" style="color: #FF6F62"></i><br>
+        <i class="fas fa-key" style="color: #FFD700"></i> KHAI PHÁ 'SECRET' TRONG TÍNH CÁCH <i class="fas fa-key" style="color: #FFD700"></i><br>
+        <i class="fas fa-star" style="color: #7af0af"></i> MÓN QUÀ TỪ VŨ TRỤ TẶNG BẠN <i class="fas fa-star" style="color: #7af0af"></i><br>
+    </div> 
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScLQ2y167XiyYEKSJFvuV2MON6z2eNALMZwPKMpnphdSlRYGw/viewform?hl=vi&hl=vi" class="cta">Tham gia ngay!</a>
+  </div>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'95cec1df58c6bd0f',t:'MTc1MjEzNjgzNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document leekByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>
