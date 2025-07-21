@@ -1,0 +1,283 @@
+/* --- Cài đặt chung và Biến màu --- */
+:root {
+    --midnight-blue: #0B1021;
+    --deep-indigo: #102C5B;
+    --slate-blue: #6483A7;
+    --powder-blue: #B3CDE0;
+    --pure-white: #FFFFFF;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--midnight-blue);
+    background-image: linear-gradient(180deg, var(--midnight-blue) 0%, #0d1a3a 100%);
+    color: var(--powder-blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    background: rgba(16, 44, 91, 0.25); /* Màu Deep Indigo trong suốt */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid rgba(100, 131, 167, 0.3); /* Viền màu Slate Blue */
+    max-width: 95vw;
+    width: 100%;
+    text-align: center;
+}
+
+/* --- Thêm vào đầu file CSS --- */
+.container.blurred {
+    filter: blur(8px) brightness(0.7);
+    transition: filter 0.5s ease-out;
+}
+
+/* --- Thêm vào khu vực Modal --- */
+.register-form {
+    text-align: center;
+}
+
+.register-form h2 {
+    color: var(--pure-white);
+    text-shadow: 0 0 10px var(--powder-blue);
+    margin-bottom: 10px;
+}
+
+.register-form p {
+    color: var(--slate-blue);
+    margin-bottom: 30px;
+}
+
+#userInfoForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#userInfoForm input {
+    max-width: 400px;
+    width: 100%;
+    align-self: center;
+    background-color: rgba(11, 16, 33, 0.8); /* Midnight Blue trong suốt */
+    border: 1px solid var(--slate-blue);
+    color: var(--pure-white);
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Kiểu cho placeholder */
+#userInfoForm input::placeholder {
+    color: var(--slate-blue);
+}
+/* Kiểu cho date input */
+#userInfoForm input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+#userInfoForm input:focus {
+    border-color: var(--powder-blue);
+    box-shadow: 0 0 10px rgba(179, 205, 224, 0.5);
+}
+
+#userInfoForm button {
+    max-width: 50%;
+    align-self: center;
+    background-color: var(--slate-blue);
+    color: var(--pure-white);
+    padding: 15px;
+    border: none;
+    border-radius: 45px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+}
+
+#userInfoForm button:hover {
+    background-color: var(--powder-blue);
+    color: var(--deep-indigo);
+}
+
+header h1 {
+    color: var(--pure-white);
+    text-shadow: 0 0 10px var(--powder-blue);
+}
+header p {
+    color: var(--slate-blue);
+}
+
+/* --- Vòng Tròn Cánh Cổng --- */
+.hub-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    min-height: 500px;
+    perspective: 1000px;
+}
+
+.gate-hub {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
+    animation: slow-spin 80s linear infinite; /* Chậm hơn để thêm phần tĩnh lặng */
+}
+
+@keyframes slow-spin {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
+}
+
+.gate {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120px;
+    height: 160px;
+    margin-left: -60px;
+    margin-top: -80px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    opacity: 0.6;
+    filter: brightness(0.6);
+    transform: rotateY(var(--angle)) translateZ(var(--radius));
+}
+
+.gate-hub:hover {
+    animation-play-state: paused;
+}
+
+.gate:hover {
+    opacity: 1;
+    filter: brightness(1);
+    transform: rotateY(var(--angle)) translateZ(var(--radius)) scale(1.15);
+}
+
+.gate.answered {
+    opacity: 1;
+    filter: brightness(1.2);
+    border: 2px solid var(--powder-blue);
+    box-shadow: 0 0 15px var(--powder-blue), 0 0 5px var(--powder-blue) inset;
+    border-radius: 10px;
+}
+
+.gate img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    pointer-events: none;
+    filter: grayscale(30%) sepia(20%) brightness(90%); /* Thêm filter để ảnh đồng bộ màu */
+}
+
+.gate.answered img {
+    filter: none;
+}
+
+.gate-number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5em;
+    font-weight: bold;
+    color: var(--pure-white);
+    text-shadow: 0 0 10px var(--midnight-blue), 0 0 5px var(--midnight-blue);
+    pointer-events: none;
+}
+
+/* --- Hiệu ứng Cổng Thời Gian --- */
+#portal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle, transparent 30%, var(--midnight-blue) 70%);
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    transform-origin: center center;
+}
+
+#portal-overlay.active {
+    opacity: 1;
+    animation: portal-swirl 1s ease-in-out forwards;
+}
+
+@keyframes portal-swirl {
+    0% { transform: scale(3) rotate(0deg); opacity: 0; }
+    50% { transform: scale(1) rotate(180deg); opacity: 1; }
+    100% { transform: scale(3) rotate(360deg); opacity: 0; }
+}
+
+/* --- Cửa sổ Modal Câu Hỏi --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(11, 16, 33, 0.8); /* Màu Midnight Blue trong suốt */
+    backdrop-filter: blur(5px); /* Hiệu ứng làm mờ nền */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--deep-indigo);
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    border: 1px solid var(--slate-blue);
+    box-shadow: 0 0 20px rgba(179, 205, 224, 0.1);
+}
+
+#modal-question-text { font-size: 1.2em; margin-bottom: 20px; color: var(--pure-white); }
+#modal-answers-container .answer-item { display: flex; align-items: center; margin-bottom: 10px; text-align: left; }
+#modal-answers-container label { margin-left: 10px; color: var(--powder-blue); }
+#modal-answers-container input[type="number"] { width: 50px; margin-left: auto; background-color: var(--midnight-blue); border: 1px solid var(--slate-blue); color: var(--pure-white); border-radius: 4px; }
+#modal-save-btn { background-color: var(--slate-blue); color: var(--pure-white); padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-top: 20px; font-weight: bold; transition: background-color 0.3s; }
+#modal-save-btn:hover { background-color: var(--powder-blue); color: var(--deep-indigo); }
+
+/* --- Nút và Kết Quả --- */
+.hidden { display: none; }
+#submitBtn {
+    padding: 15px 30px;
+    background-color: var(--deep-indigo);
+    color: var(--pure-white);
+    border: 2px solid var(--powder-blue);
+    border-radius: 5px;
+    font-size: 1.3em;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: all 0.3s;
+    text-shadow: 0 0 5px var(--powder-blue);
+}
+#submitBtn:hover { background-color: var(--powder-blue); color: var(--deep-indigo); text-shadow: none; }
+#resultContainer { margin-top: 30px; padding: 20px; background: rgba(11, 16, 33, 0.4); border-radius: 10px; }
+.score-item { display: flex; align-items: center; margin-bottom: 10px; }
+.score-label { width: 120px; font-weight: bold; color: var(--slate-blue); }
+.score-bar-container { flex-grow: 1; background-color: rgba(11, 16, 33, 0.8); border-radius: 5px; height: 20px; margin: 0 10px; }
+.score-bar { height: 100%; border-radius: 5px; width: 0; transition: width 1s ease-in-out; }
+.p-bar { background-color: #55E6C1; /* Màu xanh lá cây ngọc bích để nổi bật */ }
+.c-bar { background-color: var(--slate-blue); }
+.k-bar { background-color: #FF7675; /* Màu đỏ san hô để cảnh báo */ }
+
+#profileResult h3, #feedbackResult h3, #flagResult h3 { color: var(--pure-white); }
+#profileResult p, #feedbackResult p, #flagResult p { color: var(--powder-blue); }
+#flagResult { background-color: rgba(100, 131, 167, 0.1); border-left: 5px solid var(--slate-blue); padding: 15px; margin-top: 20px;}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vòng Tròn Của Những Cánh Cổng</title>
+    <link rel="stylesheet" href="form.css">
+</head>
+<body>
+    <!-- Modal Đăng Ký Thông Tin -->
+    <div id="register-modal" class="modal-overlay">
+        <div class="modal-content register-form">
+            <h2>Chào Mừng Người Tìm Kiếm</h2>
+            <p>Trước khi bước vào Universe, vui lòng để lại Contact 'CỨU TRỢ' khi cần thiết </p>
+            <form id="userInfoForm" autocomplete="off">
+                <input type="text" id="fullName" placeholder="Họ và Tên" required>
+                <input type="date" id="dob" placeholder="Ngày sinh" required>
+                <input type="tel" id="phone" placeholder="Số điện thoại" required pattern="[0-9]{9,12}">
+                <input type="text" id="referrer" placeholder="Tên người giới thiệu (nếu có)">
+                <button type="submit">UNIVERSE</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Hiệu ứng Cổng Thời Gian -->
+    <div id="portal-overlay"></div>
+
+    <!-- Container Chính -->
+    <div class="container blurred">
+        <header>
+            <h1>Universe of Inner Gates</h1>
+            <p>Mỗi cánh cổng đại diện cho một câu hỏi về tâm hồn bên trong.<br>
+            Khi 10 cánh cổng được mở ra, Người gác cổng bật mí cho biết bạn đang như thế nào?<br>
+            </p>
+        </header>
+
+        <!-- Vòng tròn cánh cổng -->
+        <main class="hub-container">
+            <div id="gate-hub" class="gate-hub">
+                <!-- Các cánh cổng sẽ được tạo ra bởi JavaScript -->
+            </div>
+        </main>
+
+        <button id="submitBtn" class="hidden">Discovery Your Inner Universe</button>
+
+        <!-- Modal câu hỏi -->
+        <div id="question-modal" class="modal-overlay hidden">
+            <div class="modal-content">
+                <h3 id="modal-question-text"></h3>
+                <div id="modal-answers-container"></div>
+                <button id="modal-save-btn">Back to other Gates</button>
+            </div>
+        </div>
+        
+        <!-- Khu vực hiển thị kết quả -->
+        <div id="resultContainer" class="hidden">
+            <h2>Hồ Sơ Nội Tâm Của Bạn</h2>
+            <div class="scores">
+                <div class="score-item">
+                    <span class="score-label">Sẵn Sàng [P]</span>
+                    <div class="score-bar-container"><div id="pScoreBar" class="score-bar p-bar"></div></div>
+                    <span id="pScore">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="score-label">Cân Nhắc [C]</span>
+                    <div class="score-bar-container"><div id="cScoreBar" class="score-bar c-bar"></div></div>
+                    <span id="cScore">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="score-label">Rủi Ro [K]</span>
+                    <div class="score-bar-container"><div id="kScoreBar" class="score-bar k-bar"></div></div>
+                    <span id="kScore">0</span>
+                </div>
+            </div>
+            <div id="profileResult">
+                <h3>Hồ sơ của bạn:</h3>
+                <p id="profileText"></p>
+            </div>
+            <div id="feedbackResult">
+                <h3>Lời khuyên từ "Người Gác Cổng":</h3>
+                <p id="feedbackText"></p>
+            </div>
+            <div id="flagResult" class="hidden">
+                <h3>Lưu ý đặc biệt:</h3>
+                <p id="flagText"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="form1.js"></script>
+</body>
+</html>
