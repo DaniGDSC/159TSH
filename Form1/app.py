@@ -71,7 +71,7 @@ def submit_result():
         p_score=data.get('p_score'),
         c_score=data.get('c_score'),
         k_score=data.get('k_score'),
-        profile=data.get('profile'),
+        profile=data.get('profile'),j
         feedback=data.get('feedback'),
         raw_answers=data.get('raw_answers')
     )
