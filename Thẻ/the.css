@@ -1,0 +1,231 @@
+body {
+    background: #f5a623;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.flyer {
+    width: 680px;
+    height: 356px;
+    background: linear-gradient(110deg, #d32f2f 80%, #ffe600 100%);
+    border-radius: 18px;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+    border: 4px solid #fff;
+    position: relative;
+    overflow: hidden;
+    margin: 40px auto;
+}
+
+.flyer-logo {
+    position: absolute;
+    top: 14px;
+    left: 18px;
+    z-index: 3;
+}
+.flyer-logo img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    background: #fff;
+}
+
+.flyer-header {
+    position: absolute;
+    top: 18px;
+    left: 70px;
+    color: #fff;
+    font-size: 1.15em;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    z-index: 2;
+}
+.flyer-header span {
+    color: #ffe600;
+    font-weight: 700;
+}
+.flyer-arrows {
+    margin-left: 12px;
+    vertical-align: middle;
+}
+.arrow {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: linear-gradient(135deg, #ffe600 60%, #fff 100%);
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+    margin-right: 2px;
+    transform: rotate(180deg);
+}
+
+.flyer-image {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 2;
+    border-radius: 50%;
+    border: 6px solid #ffe600;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    width: 210px;
+    height: 210px;
+    overflow: hidden;
+    background: #fff;
+}
+.flyer-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.flyer-content {
+    position: absolute;
+    top: 70px;
+    left: 40px;
+    width: 340px;
+    z-index: 1;
+    color: #fff;
+    text-shadow: 1px 1px 0 #b71c1c;
+}
+
+    
+
+.flyer-8buoi {
+    font-size: 3.2em;
+    font-weight: bold;
+    margin: 8px 0 0 0;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    line-height: 1;
+    text-shadow: 2px 2px 0 #000, 0 0 8px #fff200;
+}
+.flyer-8buoi .number {
+    color: #ffe600;
+    font-size: 1.2em;
+    margin-right: 2px;
+    font-family: Arial Black, Arial, sans-serif;
+}
+.flyer-8buoi .buoi {
+    color: #ffe600;
+    font-size: 0.5em;
+    margin-right: 4px;
+    font-family: Arial Black, Arial, sans-serif;
+    text-shadow: 2px 2px 0 #000, 0 0 8px #fff200;
+}
+
+.flyer-trai-nghiem {
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-top: -8px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 0 #000, 0 0 8px #fff200;
+    letter-spacing: 1px;
+}
+
+.flyer-boxes {
+    display: flex;
+    margin-bottom: 20px;
+}
+.flyer-box {
+    background: #b71c1c;
+    color: #fff;
+    border-radius: 8px 0 8px 0;
+    padding: 8px 16px;
+    font-weight: bold;
+    font-size: 1em;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    text-align: center;
+    text-transform: uppercase;
+}
+.flyer-box.red {
+    background: #b71c1c;
+}
+
+.flyer-row {
+    display: flex;
+    align-items: flex-end;
+        margin-top: 8px;
+}
+.flyer-note {
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 1.2em;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    width: 110px;
+    text-align: center;
+    line-height: 1.2;
+}
+.flyer-price {
+    background: #b71c1c;
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 1em;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    text-align: center;
+    min-width: 110px;
+}
+.flyer-price span {
+    color: #ffe600;
+    font-size: 1.3em;
+    font-weight: bold;
+    display: block;
+    margin-top: 2px;
+}
+
+.flyer-bottom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: row-reverse;
+    z-index: 2;  
+    align-items: center;       
+}
+
+.flyer-bottom-right {
+    width: 40%;
+    height: 100%;
+    background: #ffe600;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 10px;
+    position: relative;
+    border-radius: 19px 0 0 0;
+}
+.flyer-age {
+    font-size: 1em;
+    color: #b71c1c;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+.flyer-age .age {
+    background: #b71c1c;
+    color: #fff;
+    border-radius: 8px;
+    padding: 2px 10px;
+    margin-left: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+.flyer-voucher {
+    font-size: 0.95em;
+    color: #333;
+    margin-top: 2px;
+}
+.flyer-voucher .date {
+    color: #1976d2;
+    font-weight: bold;
+    font-size: 1.05em;
+    display: block;
+    text-align: center;
+    
+}
